@@ -1,0 +1,19 @@
+version: '3'
+services:
+  message-server:
+    container_name: message-server
+    image: message-server:latest
+    ports:
+      - 18084:8084
+    networks:
+      - mq-network
+  rabbitmq:
+    container_name: rabbitmq
+    image: rabbitmq:latest
+    ports:
+    - 15672:5672
+    networks:
+      - mq-network
+networks:
+  mq-network:
+    driver: bridge
